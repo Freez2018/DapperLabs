@@ -12,9 +12,9 @@ public class UserTransformer {
         return users.stream()
                 .filter(Objects::nonNull)
                 .map(user -> new UserResponse(
-                        user.getFirstName(),
-                        user.getLastName(),
-                        user.getEmail()
+                        user.getFirstName().trim(),
+                        user.getLastName().trim(),
+                        user.getEmail().trim()
                 ))
                 .collect(Collectors.toList());
     }

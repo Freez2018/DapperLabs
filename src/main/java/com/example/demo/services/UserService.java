@@ -13,6 +13,10 @@ import java.util.List;
 @Service("_userService")
 @Scope("singleton")
 public class UserService {
+    public static final String USER = "postgres";
+    public static final String PASSWORD = "int";
+    public static final String DB_NAME = "DapperLabs";
+
     public List<UserResponse> getAllUsers() {
         Connection c = null;
         Statement stmt = null;
@@ -139,12 +143,13 @@ public class UserService {
         Connection c;
         Class.forName("org.postgresql.Driver");
         c = DriverManager
-                .getConnection("jdbc:postgresql://localhost:5432/DapperLabs",//create a db first
-                        "postgres", "int");
+                .getConnection("jdbc:postgresql://localhost:5432/" + DB_NAME,//create a db first
+                        USER, PASSWORD);
 
         System.out.println("Opened database successfully");
         return c;
     }
+
     private boolean checkLoginResult(List<User> users) {
         return users.size() == 1;
     }

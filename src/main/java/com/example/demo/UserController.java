@@ -22,7 +22,6 @@ public class UserController {
     @Autowired
     private UserService _userService;
 
-    //TODO: updateUser by email, tests, code reformat, refactor , git
     @GetMapping("/users")
     public ResponseEntity<Object> getUsers(@RequestHeader Map<String, String> headers) {
         String token = headers.get("x-authentication-token");
@@ -31,7 +30,7 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
         }
         try {
-            allUsers = _userService.getAllUsers();//make abother DTO to map respons
+            allUsers = _userService.getAllUsers();
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -99,7 +98,7 @@ public class UserController {
             //add logger
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return ResponseEntity.ok(jwt);//return JWT
+        return ResponseEntity.ok(jwt);
     }
 
 }

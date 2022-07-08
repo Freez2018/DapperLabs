@@ -1,15 +1,20 @@
 package com.example.demo.database;
 import java.sql.*;
 
+import static com.example.demo.services.UserService.PASSWORD;
+import static com.example.demo.services.UserService.USER;
+import static com.example.demo.services.UserService.DB_NAME;
+
 public class PostgreSQLJDBC {
+
     public static void main(String args[]) throws SQLException {
         Connection c = null;
         Statement stmt = null;
         try {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/DapperLabs",//create a db first
-                            "postgres", "int");
+                    .getConnection("jdbc:postgresql://localhost:5432/"+DB_NAME,//create a db first
+                            USER, PASSWORD);
 
             System.out.println("Opened database successfully");
 
